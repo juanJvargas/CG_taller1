@@ -19,6 +19,7 @@
 
 using namespace std;
 int flag = 0;
+GLfloat Y = 0, X = 1;
 
 void display(void) {
     glClearColor(1.0, 1.0, 1.0, 0.0);
@@ -45,6 +46,8 @@ void display(void) {
 
         glEnd();
     }
+    glLoadIdentity();
+    gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     glutSwapBuffers();
 
     glutSwapBuffers();
@@ -58,16 +61,16 @@ void reshape(int width, int height) {
         glLoadIdentity();
         gluPerspective(60.0, 1, 1.0, 128.0);
         glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        gluLookAt(0.0, 1.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+        gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     } else {
         glViewport(0, 0, height, height);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         gluPerspective(60.0, 1, 1.0, 128.0);
         glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        gluLookAt(0.0, 1.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+        gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     }
 
 }
@@ -101,8 +104,25 @@ void keyboard(unsigned char key, int x, int y) {
                 flag = 1;
 
             }
+            break;
+        case 'u':
+            Y += 0.1;
 
+            break;
+        case 'd':
+            Y -= 0.1;
+
+            break;
+        case 'r':
+            X += 0.1;
+
+            break;
+        case 'l':
+            X -= 0.1;
+
+            break;
     }
+    printf("%f,%f", X, Y);
     glutPostRedisplay();
 }
 
