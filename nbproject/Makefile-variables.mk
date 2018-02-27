@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=tortu
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/tortu
+CND_ARTIFACT_NAME_Debug=cg_taller1
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/cg_taller1
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=tortu.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/tortu.tar
+CND_PACKAGE_NAME_Debug=cgtaller1.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/cgtaller1.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=tortu
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/tortu
+CND_ARTIFACT_NAME_Release=cg_taller1
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/cg_taller1
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=tortu.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/tortu.tar
+CND_PACKAGE_NAME_Release=cgtaller1.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/cgtaller1.tar
 #
 # include compiler specific variables
 #

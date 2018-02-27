@@ -18,17 +18,47 @@
 
 
 using namespace std;
-int flag = 0;
+int flag = 0, flag1 = 0;
 GLfloat Y = 0, X = 1;
+
+void draw_SphereTurtle() {
+
+    glTranslated(0.0, 0, 0);
+    glutWireSphere(1, 16, 6);
+    glTranslated(-1.0, .2, 0);
+    glutWireSphere(.5, 16, 6);
+    glTranslated(-0.5, -.2, 0);
+    glutWireSphere(.5, 16, 6);
+
+}
+
+void draw_turtle() {
+
+    double x[] = {0, -.4, -.37, -.2, -.2, -.45, -.45, -.6, -.75, -.77, -.4, -.5, -.52, -.4, -.75, -.77, -.6, -.4, -.2, .0};
+    double y[] = {1, .9, .73, .6, .45, .45, .5, .6, .5, .2, .2, .06, -.25, -.4, -.5, -.8, -.9, -.9, -.7, -.7};
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glLineWidth(1.f);
+    glBegin(GL_LINE_LOOP);
+    for (int i = 0; i < 20; i++) {
+        glVertex3d(x[i], y[i], 0);
+    }
+    for (int i = 19; i > -1; i--) {
+        glVertex3d(-1 * x[i], y[i], 0);
+
+    }
+    glEnd();
+
+
+}
 
 void display(void) {
     glClearColor(1.0, 1.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glColor3f(1.0, 0.0, 0.0);
+    /*glColor3f(1.0, 0.0, 0.0);
     glutWireTorus(0.25, 0.75, 28, 28);
     glColor3f(0.0, 0.0, 1.0);
-    glutWireCube(.60);
-    if (flag) {
+    glutWireCube(.60);*/
+    if (flag == 1) {
         glBegin(GL_LINES);
         glColor3f(0.0f, 1.0f, 0.0f); // green
         glVertex3f(0.0f, -0.99f, 0.0f);
@@ -45,6 +75,11 @@ void display(void) {
         glVertex3f(0.0f, 0.0f, 0.99f);
 
         glEnd();
+    }
+    if (flag1) {
+        draw_turtle();
+    } else {
+        draw_SphereTurtle();
     }
     glLoadIdentity();
     gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
@@ -89,7 +124,7 @@ void keyboard(unsigned char key, int x, int y) {
                 glEnable(GL_CULL_FACE);
             break;
         case '1':
-            glRotatef(1.0, 1., 0., 0.);
+            glRotatef(1.0, 5., 0., 0.);
             break;
         case '2':
             glRotatef(1.0, 0., 1., 0.);
@@ -121,8 +156,15 @@ void keyboard(unsigned char key, int x, int y) {
             X -= 0.1;
 
             break;
+        case '3':
+            if (flag1) {
+                flag1 = 0;
+            } else {
+                flag1 = 1;
+
+            }
+            break;
     }
-    printf("%f,%f", X, Y);
     glutPostRedisplay();
 }
 
