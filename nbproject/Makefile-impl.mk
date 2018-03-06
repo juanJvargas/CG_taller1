@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=CG_taller1
+PROJECTNAME=tortu
 
 # Active Configuration
 DEFAULTCONF=Debug

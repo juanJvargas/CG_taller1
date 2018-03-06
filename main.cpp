@@ -18,18 +18,39 @@
 
 
 using namespace std;
-int flag = 0, flag1 = 0;
+int flag = 0, flag1 = 1;
 GLfloat Y = 0, X = 1;
 
 void draw_SphereTurtle() {
-
+    glPushMatrix();
     glTranslated(0.0, 0, 0);
-    glutWireSphere(1, 16, 6);
-    glTranslated(-1.0, .2, 0);
-    glutWireSphere(.5, 16, 6);
-    glTranslated(-0.5, -.2, 0);
-    glutWireSphere(.5, 16, 6);
-
+    glutWireSphere(.7, 16, 6);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslated(0.84, .35, 0);
+    glutWireSphere(.25, 16, 6);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslated(-0.84, .35, 0);
+    glutWireSphere(.25, 16, 6);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslated(-0.84, -.35, 0);
+    glutWireSphere(.25, 16, 6);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslated(0.84, -.35, 0);
+    glutWireSphere(.25, 16, 6);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslated(0, .84, 0);
+    glutWireSphere(.30, 16, 6);
+    glPopMatrix();
 }
 
 void draw_turtle() {
@@ -54,10 +75,6 @@ void draw_turtle() {
 void display(void) {
     glClearColor(1.0, 1.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    /*glColor3f(1.0, 0.0, 0.0);
-    glutWireTorus(0.25, 0.75, 28, 28);
-    glColor3f(0.0, 0.0, 1.0);
-    glutWireCube(.60);*/
     if (flag == 1) {
         glBegin(GL_LINES);
         glColor3f(0.0f, 1.0f, 0.0f); // green
@@ -81,10 +98,6 @@ void display(void) {
     } else {
         draw_SphereTurtle();
     }
-    glLoadIdentity();
-    gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-    glutSwapBuffers();
-
     glutSwapBuffers();
 
 }
@@ -92,22 +105,15 @@ void display(void) {
 void reshape(int width, int height) {
     if (width < height) {
         glViewport(0, 0, width, width);
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        gluPerspective(60.0, 1, 1.0, 128.0);
-        glMatrixMode(GL_MODELVIEW);
-
-        gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     } else {
         glViewport(0, 0, height, height);
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        gluPerspective(60.0, 1, 1.0, 128.0);
-        glMatrixMode(GL_MODELVIEW);
-
-        gluLookAt(Y, X, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
     }
-
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(60.0, 1, 1.0, 128.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(X, Y, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
 
 void keyboard(unsigned char key, int x, int y) {
@@ -124,7 +130,7 @@ void keyboard(unsigned char key, int x, int y) {
                 glEnable(GL_CULL_FACE);
             break;
         case '1':
-            glRotatef(1.0, 5., 0., 0.);
+            glRotatef(1.0, 1., 0., 0.);
             break;
         case '2':
             glRotatef(1.0, 0., 1., 0.);
@@ -141,20 +147,16 @@ void keyboard(unsigned char key, int x, int y) {
             }
             break;
         case 'u':
-            Y += 0.1;
-
+            glRotatef(1.0, 0.1, 0, 0.);
             break;
         case 'd':
-            Y -= 0.1;
-
+            glRotatef(1.0, -0.1, 0, 0.);
             break;
         case 'r':
-            X += 0.1;
-
+            glRotatef(1.0, 0, 0.1, 0.);
             break;
         case 'l':
-            X -= 0.1;
-
+            glRotatef(1.0, 0, -0.1, 0.);
             break;
         case '3':
             if (flag1) {
