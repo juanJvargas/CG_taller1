@@ -26,27 +26,27 @@ void draw_SphereTurtle() {
     glTranslated(0.0, 0, 0);
     glutWireSphere(.7, 16, 6);
     glPopMatrix();
-    
+
     glPushMatrix();
     glTranslated(0.84, .35, 0);
     glutWireSphere(.25, 16, 6);
     glPopMatrix();
-    
+
     glPushMatrix();
     glTranslated(-0.84, .35, 0);
     glutWireSphere(.25, 16, 6);
     glPopMatrix();
-    
+
     glPushMatrix();
     glTranslated(-0.84, -.35, 0);
     glutWireSphere(.25, 16, 6);
     glPopMatrix();
-    
+
     glPushMatrix();
     glTranslated(0.84, -.35, 0);
     glutWireSphere(.25, 16, 6);
     glPopMatrix();
-    
+
     glPushMatrix();
     glTranslated(0, .84, 0);
     glutWireSphere(.30, 16, 6);
@@ -147,16 +147,32 @@ void keyboard(unsigned char key, int x, int y) {
             }
             break;
         case 'u':
-            glRotatef(1.0, 0.1, 0, 0.);
+            Y += 0.1;
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+
+            gluLookAt(X, Y, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
             break;
         case 'd':
-            glRotatef(1.0, -0.1, 0, 0.);
+            Y -= 0.1;
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+
+            gluLookAt(X, Y, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
             break;
         case 'r':
-            glRotatef(1.0, 0, 0.1, 0.);
+            X += 0.1;
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+
+            gluLookAt(X, Y, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
             break;
         case 'l':
-            glRotatef(1.0, 0, -0.1, 0.);
+            X -= 0.1;
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+
+            gluLookAt(X, Y, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
             break;
         case '3':
             if (flag1) {
